@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsQuan" targetNamespace="http://tempuri.org/dsQuan.xsd" xmlns:mstns="http://tempuri.org/dsQuan.xsd" xmlns="http://tempuri.org/dsQuan.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsQuan" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsQuan" msprop:Generator_UserDSName="dsQuan">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="mem_sale_all" msprop:Generator_TableClassName="mem_sale_allDataTable" msprop:Generator_TableVarName="tablemem_sale_all" msprop:Generator_TablePropName="mem_sale_all" msprop:Generator_RowDeletingName="mem_sale_allRowDeleting" msprop:Generator_RowChangingName="mem_sale_allRowChanging" msprop:Generator_RowEvHandlerName="mem_sale_allRowChangeEventHandler" msprop:Generator_RowDeletedName="mem_sale_allRowDeleted" msprop:Generator_UserTableName="mem_sale_all" msprop:Generator_RowChangedName="mem_sale_allRowChanged" msprop:Generator_RowEvArgName="mem_sale_allRowChangeEvent" msprop:Generator_RowClassName="mem_sale_allRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="会籍种类" msprop:Generator_ColumnVarNameInTable="column会籍种类" msprop:Generator_ColumnPropNameInRow="会籍种类" msprop:Generator_ColumnPropNameInTable="会籍种类Column" msprop:Generator_UserColumnName="会籍种类" type="xs:string" minOccurs="0" />
+              <xs:element name="均价" msprop:Generator_ColumnVarNameInTable="column均价" msprop:Generator_ColumnPropNameInRow="均价" msprop:Generator_ColumnPropNameInTable="均价Column" msprop:Generator_UserColumnName="均价" type="xs:string" minOccurs="0" />
+              <xs:element name="数量" msprop:Generator_ColumnVarNameInTable="column数量" msprop:Generator_ColumnPropNameInRow="数量" msprop:Generator_ColumnPropNameInTable="数量Column" msprop:Generator_UserColumnName="数量" type="xs:string" minOccurs="0" />
+              <xs:element name="合计金额" msprop:Generator_ColumnVarNameInTable="column合计金额" msprop:Generator_ColumnPropNameInRow="合计金额" msprop:Generator_ColumnPropNameInTable="合计金额Column" msprop:Generator_UserColumnName="合计金额" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
