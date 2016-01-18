@@ -1,0 +1,8 @@
+E:\谢峰C#\Project\QuanMinFinancialStatement\QuanMinFinancialStatement\QuanMinFinancialStatement\bin\Debug\QuanMinFinancialStatement.exe
+E:\谢峰C#\Project\QuanMinFinancialStatement\QuanMinFinancialStatement\QuanMinFinancialStatement\bin\Debug\QuanMinFinancialStatement.pdb
+E:\谢峰C#\Project\QuanMinFinancialStatement\QuanMinFinancialStatement\QuanMinFinancialStatement\obj\Debug\QuanMinFinancialStatement.csprojResolveAssemblyReference.cache
+E:\谢峰C#\Project\QuanMinFinancialStatement\QuanMinFinancialStatement\QuanMinFinancialStatement\obj\Debug\QuanMinFinancialStatement.Form1.resources
+E:\谢峰C#\Project\QuanMinFinancialStatement\QuanMinFinancialStatement\QuanMinFinancialStatement\obj\Debug\QuanMinFinancialStatement.Properties.Resources.resources
+E:\谢峰C#\Project\QuanMinFinancialStatement\QuanMinFinancialStatement\QuanMinFinancialStatement\obj\Debug\QuanMinFinancialStatement.csproj.GenerateResource.Cache
+E:\谢峰C#\Project\QuanMinFinancialStatement\QuanMinFinancialStatement\QuanMinFinancialStatement\obj\Debug\QuanMinFinancialStatement.exe
+E:\谢峰C#\Project\QuanMinFinancialStatement\QuanMinFinancialStatement\QuanMinFinancialStatement\obj\Debug\QuanMinFinancialStatement.pdb
