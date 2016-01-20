@@ -282,6 +282,7 @@ namespace QuanMinFinancialStatement
                 {
                     ccbParent.ItemCheck(sender, e);
                 }
+                
             }
 
         } // end internal class Dropdown

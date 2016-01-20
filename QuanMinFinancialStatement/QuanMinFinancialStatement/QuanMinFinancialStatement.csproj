@@ -73,6 +73,12 @@
     <Compile Include="getLxerpConn.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CheckedComboBoxWithLable.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CheckedComboBoxWithLable.Designer.cs">
+      <DependentUpon>CheckedComboBoxWithLable.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,7 +92,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="CheckedComboBoxWithLable.resx">
+      <DependentUpon>CheckedComboBoxWithLable.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="业务出纳表.rdlc" />
+    <EmbeddedResource Include="各营业点账务统计表.rdlc" />
     <None Include="app.config" />
     <None Include="dsQuan.xsc">
       <DependentUpon>dsQuan.xsd</DependentUpon>

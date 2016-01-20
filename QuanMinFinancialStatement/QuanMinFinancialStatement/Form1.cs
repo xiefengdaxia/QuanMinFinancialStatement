@@ -22,18 +22,10 @@ namespace QuanMinFinancialStatement
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            //for (int i = 0; i < coloursArr.Length; i++)
-            //{
-            //    CCBoxItem item = new CCBoxItem(coloursArr[i], i);
-            //    checkedComboBox1.Items.Add(item);
-            //}
             //把时间控件设为当月1号
             DTbegin.Text = DTbegin.Text.Substring(0, 8) + "1";
-            setCombo("select user_namec from sys_user", checkedComboBox1);
-            //checkedComboBox1.MaxDropDownItems = 50;
-            //checkedComboBox1.DisplayMember = "Name";
-            checkedComboBox1.ValueSeparator = ",";
+
+
         }
         #region 设置combox的值方法，参数(sql,cmb)
         //设置combox的值--------------
@@ -57,6 +49,54 @@ namespace QuanMinFinancialStatement
             while (dr.Read())
             {
                 cmb.Items.Add(dr.GetValue(0).ToString().Trim());
+            }
+            cn.Close();
+            cn.Dispose();
+        }
+        private void setCombo(string sql, ComboBox cmb)
+        {
+            //清空下拉列表
+            cmb.Items.Clear();
+            cmb.Items.Add("%");
+            cmb.Text = "%";
+            //实例化一个类
+            getLxerpConn v = new getLxerpConn();
+            //获取类里面的sql连接到数据库的字符串
+            v.getsqlconn();
+            //  string connStr = "Data Source=.\\sql2008;Initial Catalog=books;Integrated Security=True"; //连接到数据库的字符串
+            SqlConnection cn = new SqlConnection(v.Sqlconn);
+            //打开链接
+            cn.Open();
+            SqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = sql;
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                cmb.Items.Add(dr.GetValue(0).ToString().Trim());
+            }
+            cn.Close();
+            cn.Dispose();
+        }
+        private void setCombo(string sql, CheckedComboBoxWithLable cmb)
+        {
+            //清空下拉列表
+            cmb.ClearItem();
+            //cmb.Items.Add("%");
+            //cmb.Text = "%";
+            //实例化一个类
+            getLxerpConn v = new getLxerpConn();
+            //获取类里面的sql连接到数据库的字符串
+            v.getsqlconn();
+            //  string connStr = "Data Source=.\\sql2008;Initial Catalog=books;Integrated Security=True"; //连接到数据库的字符串
+            SqlConnection cn = new SqlConnection(v.Sqlconn);
+            //打开链接
+            cn.Open();
+            SqlCommand cmd = cn.CreateCommand();
+            cmd.CommandText = sql;
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                cmb.Add_CB_Item(dr.GetValue(0).ToString().Trim());
             }
             cn.Close();
             cn.Dispose();
@@ -107,7 +147,7 @@ namespace QuanMinFinancialStatement
                 //clear非常重要，不加没数据，坑死人
                 reportViewer1.LocalReport.DataSources.Clear();
                 reportViewer1.LocalReport.DataSources.Add(rds);
-                ReportParameter canshu = new ReportParameter("F_date_to_date", "【从】" +DTbegin.Text + "【到】" +DTend.Text);
+                ReportParameter canshu = new ReportParameter("F_date_to_date", "【从】" + DTbegin.Text + "【到】" + DTend.Text);
                 this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { canshu });
 
                 //加载报表查看器
@@ -116,7 +156,7 @@ namespace QuanMinFinancialStatement
             catch (Exception ex)
             {
                 //显示错误信息
-                MessageBox.Show(ex.Message+"\n"+ex.StackTrace);
+                MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
             }
             finally
             {
@@ -132,15 +172,94 @@ namespace QuanMinFinancialStatement
 
         private void buttonX1_Click(object sender, EventArgs e)
         {
-            string sql = @"select  c.name as 会籍种类 ,count(*) as 数量 ,sum(a.totalpayable) as 合计金额 from pos_bills a 
+            //MessageBox.Show(ccb1.Text + "\n" + ccb2.Text+"\n"+CheckedComboBoxWithLable.comboxText);
+            if (radioButton5.Checked == true)
+            {
+                string sql = "";
+                sql +=
+                @"select  c.name as 会籍种类 ,count(*) as 数量 ,sum(a.totalpayable) as 合计金额 from pos_bills a 
                 left join mem_member b on a.memno=b.m_id 
                 left join mem_kind c on c.memberkind=b.memberkind
                 left join sys_user d on a.openuserid=d.empid
                 left join sys_workshop e on a.billshop=e.shop_code
-                right join (select distinct billcode from pos_sales where itemcode  in('99995','99987','99996') and rec_status=1) f on f.billcode=a.billcode 
-                where 1=1 and a.paycode in('$91','$93','$95')  and d.user_namec like '%%%' and e.namec like '%%%' and a.closedate>='2015-01-01' and  a.closedate <= '2016-01-18' and a.bill_status = 1 group by c.name  ";
-            string rpName = "QuanMinFinancialStatement.业务出纳表.rdlc";
-            baobiao(sql, rpName);
+                right join (select distinct billcode from pos_sales where itemcode  in ('99995','99987','99996') and rec_status=1) f on f.billcode=a.billcode 
+                where 1=1 and a.paycode in('$91','$93','$95') ";
+                sql += "	AND d.user_namec IN " + comboxTosqlString(CheckedComboBoxWithLable);
+                sql += "AND (c.name is null or c.name IN " + comboxTosqlString(checkedComboBoxWithLable1);
+                sql += ")	AND e.namec LIKE '%" + cb.Text + "%'";
+                sql += "	AND a.closedate >= '" + DTbegin.Text + "'";
+                sql += "	AND a.closedate <= '" + DTend.Text + "'";
+                sql += "	AND a.bill_status = 1 GROUP BY c.name";
+                string rpName = "QuanMinFinancialStatement.业务出纳表.rdlc";
+                baobiao(sql, rpName);
+            }
+
         }
+        CheckedComboBox ccb1;
+        CheckedComboBox ccb2;
+        ComboBox cb;
+        private void radioButton5_Click(object sender, EventArgs e)
+        {
+            cb = Add_ComboBox(cb, DTend, "select NAMEC from sys_workshop", "营业点:");
+
+            //ccb1 = Add_CheckedComboBox(ccb1, cb, "select user_namec from sys_user", "操作员:");
+            //ccb2 = Add_CheckedComboBox(ccb2, ccb1, "select mem_kind.name from mem_kind", "卡 种:");
+            CheckedComboBoxWithLable.LableText = "操作员:";
+            setCombo("select user_namec from sys_user", CheckedComboBoxWithLable);
+
+            checkedComboBoxWithLable1.LableText = "卡 种:";
+            setCombo("select mem_kind.name from mem_kind", checkedComboBoxWithLable1);
+        }
+
+        private CheckedComboBox Add_CheckedComboBox(CheckedComboBox ccb, Control above_crl, string sql, string lableText)
+        {
+            ccb = new CheckedComboBox();
+            setCombo(sql, ccb);
+            ccb.Top = above_crl.Top + above_crl.Height + 13;
+            ccb.Left = above_crl.Left;
+            groupPanel2.Controls.Add(ccb);
+
+            Label l = new Label();
+            l.Text = lableText;
+            l.Top = above_crl.Top + above_crl.Height + 16;
+            l.Left = label1.Left;
+            l.BackColor = Color.Transparent;
+            groupPanel2.Controls.Add(l);
+
+            return ccb;
+        }
+
+        void l_DoubleClick(object sender, EventArgs e)
+        {
+            for (int i = 0; i < ccb1.Items.Count; i++)
+            {
+                ccb1.SetItemChecked(i, true);
+            }
+        }
+
+        private ComboBox Add_ComboBox(ComboBox cb, Control above_crl, string sql, string lableText)
+        {
+            cb = new ComboBox();
+            setCombo(sql, cb);
+            cb.Top = above_crl.Top + above_crl.Height + 13;
+            cb.Left = above_crl.Left;
+            groupPanel2.Controls.Add(cb);
+
+            Label l = new Label();
+            l.Text = lableText;
+            l.Top = above_crl.Top + above_crl.Height + 16;
+            l.Left = label1.Left;
+            l.BackColor = Color.Transparent;
+            groupPanel2.Controls.Add(l);
+            return cb;
+        }
+        private string comboxTosqlString(CheckedComboBoxWithLable cbwl)
+        {
+            //('99995','99987','99996')
+            string sql_plus = "('" + cbwl.comboxText.Replace(",", "','") + "')";
+
+            return sql_plus;
+        }
+
     }
 }

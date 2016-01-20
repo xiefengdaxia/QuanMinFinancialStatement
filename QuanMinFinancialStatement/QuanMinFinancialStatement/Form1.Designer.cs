@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.dsQuan = new QuanMinFinancialStatement.dsQuan();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.ribbonControl1 = new DevComponents.DotNetBar.RibbonControl();
             this.styleManager2 = new DevComponents.DotNetBar.StyleManager(this.components);
@@ -50,16 +51,11 @@
             this.DTbegin = new System.Windows.Forms.DateTimePicker();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.dsQuan = new QuanMinFinancialStatement.dsQuan();
-            this.mem_sale_allBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.checkedComboBox2 = new QuanMinFinancialStatement.CheckedComboBox();
-            this.checkedComboBox1 = new QuanMinFinancialStatement.CheckedComboBox();
+            this.checkedComboBoxWithLable1 = new QuanMinFinancialStatement.CheckedComboBoxWithLable();
+            this.CheckedComboBoxWithLable = new QuanMinFinancialStatement.CheckedComboBoxWithLable();
+            ((System.ComponentModel.ISupportInitialize)(this.dsQuan)).BeginInit();
             this.groupPanel1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -68,16 +64,19 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dsQuan)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mem_sale_allBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // dsQuan
+            // 
+            this.dsQuan.DataSetName = "dsQuan";
+            this.dsQuan.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
             this.reportViewer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             reportDataSource1.Name = "dsQuan";
-            reportDataSource1.Value = this.mem_sale_allBindingSource;
+            reportDataSource1.Value = null;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "QuanMinFinancialStatement.业务出纳表.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
@@ -205,6 +204,7 @@
             this.radioButton5.TabStop = true;
             this.radioButton5.Text = "业务出纳表";
             this.radioButton5.UseVisualStyleBackColor = false;
+            this.radioButton5.Click += new System.EventHandler(this.radioButton5_Click);
             // 
             // radioButton2
             // 
@@ -254,7 +254,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(31, 43);
+            this.label1.Location = new System.Drawing.Point(9, 43);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 12);
             this.label1.TabIndex = 17;
@@ -264,7 +264,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(31, 9);
+            this.label2.Location = new System.Drawing.Point(9, 11);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 12);
             this.label2.TabIndex = 16;
@@ -274,18 +274,18 @@
             // 
             this.DTend.CustomFormat = "yyyy-MM-dd";
             this.DTend.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DTend.Location = new System.Drawing.Point(84, 37);
+            this.DTend.Location = new System.Drawing.Point(58, 37);
             this.DTend.Name = "DTend";
-            this.DTend.Size = new System.Drawing.Size(107, 21);
+            this.DTend.Size = new System.Drawing.Size(119, 21);
             this.DTend.TabIndex = 15;
             // 
             // DTbegin
             // 
             this.DTbegin.CustomFormat = "yyyy-MM-dd";
             this.DTbegin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DTbegin.Location = new System.Drawing.Point(84, 5);
+            this.DTbegin.Location = new System.Drawing.Point(58, 5);
             this.DTbegin.Name = "DTbegin";
-            this.DTbegin.Size = new System.Drawing.Size(107, 21);
+            this.DTbegin.Size = new System.Drawing.Size(119, 21);
             this.DTbegin.TabIndex = 14;
             // 
             // groupPanel2
@@ -293,14 +293,10 @@
             this.groupPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.groupPanel2.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
-            this.groupPanel2.Controls.Add(this.checkedComboBox2);
-            this.groupPanel2.Controls.Add(this.checkedComboBox1);
+            this.groupPanel2.Controls.Add(this.checkedComboBoxWithLable1);
+            this.groupPanel2.Controls.Add(this.CheckedComboBoxWithLable);
             this.groupPanel2.Controls.Add(this.buttonX1);
-            this.groupPanel2.Controls.Add(this.comboBox1);
             this.groupPanel2.Controls.Add(this.DTbegin);
-            this.groupPanel2.Controls.Add(this.label5);
-            this.groupPanel2.Controls.Add(this.label4);
-            this.groupPanel2.Controls.Add(this.label3);
             this.groupPanel2.Controls.Add(this.label1);
             this.groupPanel2.Controls.Add(this.DTend);
             this.groupPanel2.Controls.Add(this.label2);
@@ -352,72 +348,6 @@
             this.buttonX1.Text = "查询";
             this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "1231",
-            "123",
-            "1231231",
-            "123",
-            "1231231",
-            "123",
-            "1231231",
-            "123",
-            "1231231",
-            "123",
-            "1231231",
-            "123",
-            "1231231",
-            "123",
-            "1231231",
-            "123",
-            "1231231",
-            "123",
-            "1231231",
-            "123",
-            "1231231",
-            "123",
-            "1231231",
-            "123",
-            "1231231",
-            "123",
-            "123"});
-            this.comboBox1.Location = new System.Drawing.Point(84, 72);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(107, 20);
-            this.comboBox1.TabIndex = 18;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Location = new System.Drawing.Point(31, 141);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 12);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "操作员:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Location = new System.Drawing.Point(31, 109);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 12);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "卡 种:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(31, 75);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 12);
-            this.label3.TabIndex = 17;
-            this.label3.Text = "营业点:";
-            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -453,43 +383,25 @@
             this.splitContainer2.SplitterDistance = 158;
             this.splitContainer2.TabIndex = 20;
             // 
-            // dsQuan
+            // checkedComboBoxWithLable1
             // 
-            this.dsQuan.DataSetName = "dsQuan";
-            this.dsQuan.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.checkedComboBoxWithLable1.BackColor = System.Drawing.Color.Transparent;
+            this.checkedComboBoxWithLable1.comboxText = "";
+            this.checkedComboBoxWithLable1.LableText = "操作员:";
+            this.checkedComboBoxWithLable1.Location = new System.Drawing.Point(7, 173);
+            this.checkedComboBoxWithLable1.Name = "checkedComboBoxWithLable1";
+            this.checkedComboBoxWithLable1.Size = new System.Drawing.Size(226, 31);
+            this.checkedComboBoxWithLable1.TabIndex = 19;
             // 
-            // mem_sale_allBindingSource
+            // CheckedComboBoxWithLable
             // 
-            this.mem_sale_allBindingSource.DataMember = "mem_sale_all";
-            this.mem_sale_allBindingSource.DataSource = this.dsQuan;
-            // 
-            // checkedComboBox2
-            // 
-            this.checkedComboBox2.CheckOnClick = true;
-            this.checkedComboBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.checkedComboBox2.DropDownHeight = 1;
-            this.checkedComboBox2.FormattingEnabled = true;
-            this.checkedComboBox2.IntegralHeight = false;
-            this.checkedComboBox2.Location = new System.Drawing.Point(84, 138);
-            this.checkedComboBox2.MaxDropDownItems = 10;
-            this.checkedComboBox2.Name = "checkedComboBox2";
-            this.checkedComboBox2.Size = new System.Drawing.Size(107, 22);
-            this.checkedComboBox2.TabIndex = 19;
-            this.checkedComboBox2.ValueSeparator = ", ";
-            // 
-            // checkedComboBox1
-            // 
-            this.checkedComboBox1.CheckOnClick = true;
-            this.checkedComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.checkedComboBox1.DropDownHeight = 1;
-            this.checkedComboBox1.FormattingEnabled = true;
-            this.checkedComboBox1.IntegralHeight = false;
-            this.checkedComboBox1.Location = new System.Drawing.Point(84, 106);
-            this.checkedComboBox1.MaxDropDownItems = 10;
-            this.checkedComboBox1.Name = "checkedComboBox1";
-            this.checkedComboBox1.Size = new System.Drawing.Size(107, 22);
-            this.checkedComboBox1.TabIndex = 19;
-            this.checkedComboBox1.ValueSeparator = ", ";
+            this.CheckedComboBoxWithLable.BackColor = System.Drawing.Color.Transparent;
+            this.CheckedComboBoxWithLable.comboxText = "";
+            this.CheckedComboBoxWithLable.LableText = "卡 种:";
+            this.CheckedComboBoxWithLable.Location = new System.Drawing.Point(7, 136);
+            this.CheckedComboBoxWithLable.Name = "CheckedComboBoxWithLable";
+            this.CheckedComboBoxWithLable.Size = new System.Drawing.Size(226, 31);
+            this.CheckedComboBoxWithLable.TabIndex = 19;
             // 
             // Form1
             // 
@@ -503,6 +415,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "山东省全民健身中心财务报表";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dsQuan)).EndInit();
             this.groupPanel1.ResumeLayout(false);
             this.groupPanel1.PerformLayout();
             this.groupPanel2.ResumeLayout(false);
@@ -513,8 +426,6 @@
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             this.splitContainer2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dsQuan)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mem_sale_allBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -540,16 +451,11 @@
         private System.Windows.Forms.DateTimePicker DTbegin;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel2;
         private DevComponents.DotNetBar.ButtonX buttonX1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private CheckedComboBox checkedComboBox1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private CheckedComboBox checkedComboBox2;
-        private System.Windows.Forms.BindingSource mem_sale_allBindingSource;
         private dsQuan dsQuan;
+        private CheckedComboBoxWithLable CheckedComboBoxWithLable;
+        private CheckedComboBoxWithLable checkedComboBoxWithLable1;
     }
 }
 
