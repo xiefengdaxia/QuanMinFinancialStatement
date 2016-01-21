@@ -51,6 +51,7 @@
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.circularProgress1 = new DevComponents.DotNetBar.Controls.CircularProgress();
             this.dsQuan = new QuanMinFinancialStatement.dsQuan();
             this.checkedComboBoxWithLable1 = new QuanMinFinancialStatement.CheckedComboBoxWithLable();
             this.CheckedComboBoxWithLable = new QuanMinFinancialStatement.CheckedComboBoxWithLable();
@@ -179,12 +180,10 @@
             // 
             this.radioButton5.AutoSize = true;
             this.radioButton5.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton5.Checked = true;
             this.radioButton5.Location = new System.Drawing.Point(18, 3);
             this.radioButton5.Name = "radioButton5";
             this.radioButton5.Size = new System.Drawing.Size(83, 16);
             this.radioButton5.TabIndex = 0;
-            this.radioButton5.TabStop = true;
             this.radioButton5.Text = "业务出纳表";
             this.radioButton5.UseVisualStyleBackColor = false;
             this.radioButton5.Click += new System.EventHandler(this.radioButton5_Click);
@@ -344,6 +343,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.circularProgress1);
             this.splitContainer1.Panel2.Controls.Add(this.reportViewer1);
             this.splitContainer1.Size = new System.Drawing.Size(1013, 555);
             this.splitContainer1.SplitterDistance = 242;
@@ -366,6 +366,22 @@
             this.splitContainer2.Size = new System.Drawing.Size(242, 555);
             this.splitContainer2.SplitterDistance = 158;
             this.splitContainer2.TabIndex = 20;
+            // 
+            // circularProgress1
+            // 
+            this.circularProgress1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            // 
+            // 
+            // 
+            this.circularProgress1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.circularProgress1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.circularProgress1.Location = new System.Drawing.Point(295, 188);
+            this.circularProgress1.Name = "circularProgress1";
+            this.circularProgress1.ProgressColor = System.Drawing.Color.Green;
+            this.circularProgress1.ProgressTextColor = System.Drawing.Color.Black;
+            this.circularProgress1.Size = new System.Drawing.Size(145, 128);
+            this.circularProgress1.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
+            this.circularProgress1.TabIndex = 1;
             // 
             // dsQuan
             // 
@@ -444,6 +460,7 @@
         private dsQuan dsQuan;
         private CheckedComboBoxWithLable CheckedComboBoxWithLable;
         private CheckedComboBoxWithLable checkedComboBoxWithLable1;
+        private DevComponents.DotNetBar.Controls.CircularProgress circularProgress1;
     }
 }
 

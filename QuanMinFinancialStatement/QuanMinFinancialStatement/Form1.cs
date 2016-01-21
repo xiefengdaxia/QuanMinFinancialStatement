@@ -20,6 +20,7 @@ namespace QuanMinFinancialStatement
         {
             InitializeComponent();
             Control.CheckForIllegalCrossThreadCalls = false;
+            //circularProgress1.Visible = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -108,6 +109,8 @@ namespace QuanMinFinancialStatement
         #region 根据sql显示报表
         public void baobiao(string cmdsql, string reportName)
         {
+            circularProgress1.Visible = true;
+            circularProgress1.IsRunning = true;
             getLxerpConn v = new getLxerpConn();
             v.getsqlconn();
             //声明连接、命令对象及其他相关对象
@@ -151,9 +154,9 @@ namespace QuanMinFinancialStatement
                 reportViewer1.LocalReport.DataSources.Add(rds);
                 ReportParameter canshu = new ReportParameter("F_date_to_date", "【从】" + DTbegin.Text + "【到】" + DTend.Text);
                 this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { canshu });
-
                 //加载报表查看器
                 reportViewer1.RefreshReport();
+
             }
             catch (Exception ex)
             {
@@ -167,6 +170,8 @@ namespace QuanMinFinancialStatement
                 {
                     conReport.Close();
                 }
+                circularProgress1.IsRunning = false;
+                circularProgress1.Visible = false;
             }
         }
 
@@ -178,6 +183,21 @@ namespace QuanMinFinancialStatement
             {
                 try
                 {
+                    int ischecked = 0;
+                    //检查是否有选中的报表
+                    foreach (Control c in groupPanel1.Controls)
+                    {
+                        if (c is RadioButton && ((RadioButton)c).Checked == true)
+                        {
+                            ischecked++;
+                        }
+                    }
+                    if (ischecked == 0)
+                    {
+                        MessageBox.Show("请选择一个报表!", "友情提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                        return;
+                    }
+
                     if (radioButton5.Checked == true)
                     {
                         string sql = "";
@@ -244,7 +264,7 @@ namespace QuanMinFinancialStatement
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
                 }
 
             });
