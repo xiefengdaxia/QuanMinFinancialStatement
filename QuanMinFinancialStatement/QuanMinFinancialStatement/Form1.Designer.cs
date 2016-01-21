@@ -31,13 +31,11 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.dsQuan = new QuanMinFinancialStatement.dsQuan();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.ribbonControl1 = new DevComponents.DotNetBar.RibbonControl();
             this.styleManager2 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -53,9 +51,9 @@
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.dsQuan = new QuanMinFinancialStatement.dsQuan();
             this.checkedComboBoxWithLable1 = new QuanMinFinancialStatement.CheckedComboBoxWithLable();
             this.CheckedComboBoxWithLable = new QuanMinFinancialStatement.CheckedComboBoxWithLable();
-            ((System.ComponentModel.ISupportInitialize)(this.dsQuan)).BeginInit();
             this.groupPanel1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -64,12 +62,8 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dsQuan)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dsQuan
-            // 
-            this.dsQuan.DataSetName = "dsQuan";
-            this.dsQuan.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
@@ -131,7 +125,6 @@
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.groupPanel1.Controls.Add(this.radioButton4);
-            this.groupPanel1.Controls.Add(this.radioButton3);
             this.groupPanel1.Controls.Add(this.radioButton5);
             this.groupPanel1.Controls.Add(this.radioButton2);
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
@@ -174,23 +167,13 @@
             // 
             this.radioButton4.AutoSize = true;
             this.radioButton4.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton4.Location = new System.Drawing.Point(18, 70);
+            this.radioButton4.Location = new System.Drawing.Point(18, 47);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(167, 16);
             this.radioButton4.TabIndex = 0;
             this.radioButton4.Text = "各营业点充值卡消费统计表";
             this.radioButton4.UseVisualStyleBackColor = false;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton3.Location = new System.Drawing.Point(18, 47);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(137, 16);
-            this.radioButton3.TabIndex = 0;
-            this.radioButton3.Text = "各营业点账务统计表2";
-            this.radioButton3.UseVisualStyleBackColor = false;
+            this.radioButton4.Click += new System.EventHandler(this.radioButton4_Click);
             // 
             // radioButton5
             // 
@@ -212,10 +195,11 @@
             this.radioButton2.BackColor = System.Drawing.Color.Transparent;
             this.radioButton2.Location = new System.Drawing.Point(18, 25);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(137, 16);
+            this.radioButton2.Size = new System.Drawing.Size(131, 16);
             this.radioButton2.TabIndex = 0;
-            this.radioButton2.Text = "各营业点账务统计表1";
+            this.radioButton2.Text = "各营业点账务统计表";
             this.radioButton2.UseVisualStyleBackColor = false;
+            this.radioButton2.Click += new System.EventHandler(this.radioButton2_Click);
             // 
             // radioButton1
             // 
@@ -383,6 +367,11 @@
             this.splitContainer2.SplitterDistance = 158;
             this.splitContainer2.TabIndex = 20;
             // 
+            // dsQuan
+            // 
+            this.dsQuan.DataSetName = "dsQuan";
+            this.dsQuan.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // checkedComboBoxWithLable1
             // 
             this.checkedComboBoxWithLable1.BackColor = System.Drawing.Color.Transparent;
@@ -415,7 +404,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "山东省全民健身中心财务报表";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dsQuan)).EndInit();
             this.groupPanel1.ResumeLayout(false);
             this.groupPanel1.PerformLayout();
             this.groupPanel2.ResumeLayout(false);
@@ -426,6 +414,7 @@
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dsQuan)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -437,7 +426,6 @@
         private DevComponents.DotNetBar.StyleManager styleManager2;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
         private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private DevComponents.DotNetBar.ListBoxItem listBoxItem1;

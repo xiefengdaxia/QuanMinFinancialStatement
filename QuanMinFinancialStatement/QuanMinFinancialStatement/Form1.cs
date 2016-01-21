@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace QuanMinFinancialStatement
@@ -18,6 +19,7 @@ namespace QuanMinFinancialStatement
         public Form1()
         {
             InitializeComponent();
+            Control.CheckForIllegalCrossThreadCalls = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -172,27 +174,82 @@ namespace QuanMinFinancialStatement
 
         private void buttonX1_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show(ccb1.Text + "\n" + ccb2.Text+"\n"+CheckedComboBoxWithLable.comboxText);
-            if (radioButton5.Checked == true)
+            Thread worker = new Thread(delegate()
             {
-                string sql = "";
-                sql +=
-                @"select  c.name as 会籍种类 ,count(*) as 数量 ,sum(a.totalpayable) as 合计金额 from pos_bills a 
+                try
+                {
+                    if (radioButton5.Checked == true)
+                    {
+                        string sql = "";
+                        sql +=
+                        @"select  c.name as 会籍种类 ,count(*) as 数量 ,sum(a.totalpayable) as 合计金额 from pos_bills a 
                 left join mem_member b on a.memno=b.m_id 
                 left join mem_kind c on c.memberkind=b.memberkind
                 left join sys_user d on a.openuserid=d.empid
                 left join sys_workshop e on a.billshop=e.shop_code
                 right join (select distinct billcode from pos_sales where itemcode  in ('99995','99987','99996') and rec_status=1) f on f.billcode=a.billcode 
                 where 1=1 and a.paycode in('$91','$93','$95') ";
-                sql += "	AND d.user_namec IN " + comboxTosqlString(CheckedComboBoxWithLable);
-                sql += "AND (c.name is null or c.name IN " + comboxTosqlString(checkedComboBoxWithLable1);
-                sql += ")	AND e.namec LIKE '%" + cb.Text + "%'";
-                sql += "	AND a.closedate >= '" + DTbegin.Text + "'";
-                sql += "	AND a.closedate <= '" + DTend.Text + "'";
-                sql += "	AND a.bill_status = 1 GROUP BY c.name";
-                string rpName = "QuanMinFinancialStatement.业务出纳表.rdlc";
-                baobiao(sql, rpName);
-            }
+                        sql += "	AND d.user_namec IN " + comboxTosqlString(CheckedComboBoxWithLable);
+                        sql += "AND (c.name is null or c.name IN " + comboxTosqlString(checkedComboBoxWithLable1);
+                        sql += ")	AND e.namec LIKE '%" + cb.Text + "%'";
+                        sql += "	AND a.closedate >= '" + DTbegin.Text + "'";
+                        sql += "	AND a.closedate < '" + DTend.Text + "'";
+                        sql += "	AND a.bill_status = 1 GROUP BY c.name";
+                        string rpName = "QuanMinFinancialStatement.业务出纳表.rdlc";
+                        baobiao(sql, rpName);
+                    }
+                    if (radioButton2.Checked == true)
+                    {
+                        string sql = @" select b.NAMEC 营业点, c.user_namec 收银员,sum(case when payamount>0 then payamount else 0 end)收入金额,sum(case when payamount<0 then payamount else 0 end) 退款金额,SUM(payamount) 合计金额 
+                from pos_bill_payment a
+                left join sys_workshop b on a.payshop=b.SHOP_CODE
+                left join sys_user c on a.userid=c.empid
+                right join (select distinct billcode from pos_sales where (itemcode  in('99995','99987','99996')or parent_kinds = '$76' )and rec_status=1 and pay_status=1) f on f.billcode=a.billcode ";
+                        sql += "where 1=1 and a.payparent in ('0001','0002') and b.NAMEC like '%" + cb.Text + "%'";
+                        sql += "	AND a.paydate>='" + DTbegin.Text + "' and a.paydate<'" + DTend.Text + "'";
+                        sql += "   AND c.USER_NAMEC in " + comboxTosqlString(CheckedComboBoxWithLable);
+                        sql += "group by b.NAMEC,c.user_namec order by b.NAMEC";
+                        string rpName = "QuanMinFinancialStatement.各营业点账务统计表.rdlc";
+                        baobiao(sql, rpName);
+                    }
+                    if (radioButton4.Checked == true)
+                    {
+                        string sql = @"select 
+                c.namec as 营业点, 
+                paymethod as 付款编码, 
+                b.name_c as 付款方式, 
+                sum(payamount) as 合计 
+                from 
+                pos_bill_payment a, 
+                sys_payment b, 
+                sys_workshop c 
+                where 1=1 and
+                a.paymethod = b.code 
+                and a.payshop = c.shop_code ";
+                        sql += "and a.paydate >= '" + DTbegin.Text + "' and a.paydate < '" + DTend.Text + "' ";
+                        sql += "and c.namec LIKE '%" + cb.Text + "%'";
+                        sql += @"and a.rec_status = 1 
+                and a.payamount<>0
+                group by 
+                a.paymethod, 
+                b.name_c, 
+                c.namec, 
+                a.payparent 
+                having 
+                payparent = '0006'
+                order by c.namec,b.name_c";
+                        string rpName = "QuanMinFinancialStatement.各营业点充值卡消费统计表.rdlc";
+                        baobiao(sql, rpName);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            });
+            worker.Start(); 
+            
 
         }
         CheckedComboBox ccb1;
@@ -200,6 +257,8 @@ namespace QuanMinFinancialStatement
         ComboBox cb;
         private void radioButton5_Click(object sender, EventArgs e)
         {
+            
+
             cb = Add_ComboBox(cb, DTend, "select NAMEC from sys_workshop", "营业点:");
 
             //ccb1 = Add_CheckedComboBox(ccb1, cb, "select user_namec from sys_user", "操作员:");
@@ -209,6 +268,10 @@ namespace QuanMinFinancialStatement
 
             checkedComboBoxWithLable1.LableText = "卡 种:";
             setCombo("select mem_kind.name from mem_kind", checkedComboBoxWithLable1);
+
+            cb.Visible = true;
+            CheckedComboBoxWithLable.Visible = true;
+            checkedComboBoxWithLable1.Visible = true;
         }
 
         private CheckedComboBox Add_CheckedComboBox(CheckedComboBox ccb, Control above_crl, string sql, string lableText)
@@ -259,6 +322,25 @@ namespace QuanMinFinancialStatement
             string sql_plus = "('" + cbwl.comboxText.Replace(",", "','") + "')";
 
             return sql_plus;
+        }
+
+        private void radioButton2_Click(object sender, EventArgs e)
+        {
+            cb = Add_ComboBox(cb, DTend, "select NAMEC from sys_workshop", "营业点:");
+            cb.Visible = true;
+            CheckedComboBoxWithLable.Visible = true;
+            checkedComboBoxWithLable1.Visible = false;
+            CheckedComboBoxWithLable.LableText = "操作员:";
+            setCombo("select user_namec from sys_user", CheckedComboBoxWithLable);
+            
+        }
+
+        private void radioButton4_Click(object sender, EventArgs e)
+        {
+            cb = Add_ComboBox(cb, DTend, "select NAMEC from sys_workshop", "营业点:");
+            cb.Visible = true;
+            CheckedComboBoxWithLable.Visible = false;
+            checkedComboBoxWithLable1.Visible = false;
         }
 
     }
