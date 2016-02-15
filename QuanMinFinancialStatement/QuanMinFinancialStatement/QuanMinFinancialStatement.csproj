@@ -100,6 +100,8 @@
       <DependentUpon>CheckedComboBoxWithLable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="业务出纳表.rdlc" />
+    <EmbeddedResource Include="充值卡收支平衡报表.rdlc" />
+    <EmbeddedResource Include="次卡统计表.rdlc" />
     <EmbeddedResource Include="各营业点充值卡消费统计表.rdlc" />
     <EmbeddedResource Include="各营业点账务统计表.rdlc" />
     <None Include="app.config" />

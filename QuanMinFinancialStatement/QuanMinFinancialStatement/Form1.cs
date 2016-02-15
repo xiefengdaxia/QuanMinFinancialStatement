@@ -261,6 +261,65 @@ namespace QuanMinFinancialStatement
                         string rpName = "QuanMinFinancialStatement.各营业点充值卡消费统计表.rdlc";
                         baobiao(sql, rpName);
                     }
+                    if (radioButton3.Checked == true)
+                    {
+                        string sql = @"select 
+                          m_id 卡号, 
+                          (
+                            select 
+                              name 
+                            from 
+                              mem_kind 
+                            where 
+                              memberkind = a.memberkind
+                          ) 会籍种类, 
+                          namec 姓名, 
+                          (
+                            select 
+                              sum(totalpayable) 
+                            from 
+                              pos_bills 
+                            where 
+                              paycode = '$93' 
+                              and rec_status = 1 
+                              and pay_status=1
+                              and memno = a.m_id
+                          ) 充值金额 ,
+                          (
+                            select 
+                              sum(totalpayable) 
+                            from 
+                              pos_bills 
+                            where 
+                              paycode != '$93' 
+                              and rec_status = 1 
+                               and pay_status=1
+                              and memno = a.m_id
+                              and left(paymethod,1)='6'
+                          ) 消费金额 ,
+                          a.cardbalance 余额,
+                          a.joindate 办卡日期
+                        from 
+                            mem_member a left join mem_kind b on a.memberkind=b.memberkind where a.joindate >= '" + DTbegin.Text + "' and a.joindate < '" + DTend.Text + "' and a.m_id like '%" + txtBox.Text + "%'";
+                        sql += "AND b.name IN " + comboxTosqlString(CheckedComboBoxWithLable);
+                        string rpName = "QuanMinFinancialStatement.充值卡收支平衡报表.rdlc";
+                        baobiao(sql, rpName);
+                    }
+                    if (radioButton6.Checked == true)
+                    {
+                        string sql = @"select m_id 卡号,namec 姓名,(b.name)卡种,
+                    (select SUM(time) from memcardlog where type=2 and memid=a.q_id) 充次,
+                    (select SUM(time) from memcardlog where type=5 and memid=a.q_id) 扣次,
+                     c.time 余次,  DATEDIFF ( d , a.joindate , a.closedate ) 天数,
+                     a.joindate 办卡日期,a.closedate 截止日期,
+                     (case when a.closedate>GETDATE() then '未过期' else '已过期' end) 是否过期 
+                     from mem_member  a
+                     inner join memcard c on a.q_id = c.memid 
+                     left join mem_kind b on a.memberkind=b.memberkind where b.name like '%%'
+                     order by 卡种";
+                        string rpName = "QuanMinFinancialStatement.次卡统计表.rdlc";
+                        baobiao(sql, rpName);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -272,9 +331,10 @@ namespace QuanMinFinancialStatement
             
 
         }
-        CheckedComboBox ccb1;
-        CheckedComboBox ccb2;
+        //CheckedComboBox ccb1;
+        //CheckedComboBox ccb2;
         ComboBox cb;
+        TextBox txtBox;
         private void radioButton5_Click(object sender, EventArgs e)
         {
             
@@ -311,14 +371,29 @@ namespace QuanMinFinancialStatement
 
             return ccb;
         }
-
-        void l_DoubleClick(object sender, EventArgs e)
+        private TextBox add_TextBox(TextBox txtbox, Control above_crl, string lableText)
         {
-            for (int i = 0; i < ccb1.Items.Count; i++)
-            {
-                ccb1.SetItemChecked(i, true);
-            }
+            txtbox = new TextBox();
+            txtbox.Top = above_crl.Top + above_crl.Height + 13;
+            txtbox.Left = DTend.Left;
+            txtbox.Width = 119;
+            txtbox.Text = "%";
+            groupPanel2.Controls.Add(txtbox);
+            Label l = new Label();
+            l.Text = lableText;
+            l.Top = above_crl.Top + above_crl.Height + 16;
+            l.Left = label1.Left;
+            l.BackColor = Color.Transparent;
+            groupPanel2.Controls.Add(l);
+            return txtbox;
         }
+        //void l_DoubleClick(object sender, EventArgs e)
+        //{
+        //    for (int i = 0; i < ccb1.Items.Count; i++)
+        //    {
+        //        ccb1.SetItemChecked(i, true);
+        //    }
+        //}
 
         private ComboBox Add_ComboBox(ComboBox cb, Control above_crl, string sql, string lableText)
         {
@@ -361,6 +436,20 @@ namespace QuanMinFinancialStatement
             cb.Visible = true;
             CheckedComboBoxWithLable.Visible = false;
             checkedComboBoxWithLable1.Visible = false;
+        }
+
+        private void radioButton3_Click(object sender, EventArgs e)
+        {
+            CheckedComboBoxWithLable.LableText = "卡 种:";
+            setCombo("select mem_kind.name from mem_kind", CheckedComboBoxWithLable);
+            CheckedComboBoxWithLable.Visible = true;
+            checkedComboBoxWithLable1.Visible = false;
+            txtBox = add_TextBox(txtBox, CheckedComboBoxWithLable, "卡 号:");
+        }
+
+        private void radioButton6_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

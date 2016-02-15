@@ -35,6 +35,10 @@
             this.ribbonControl1 = new DevComponents.DotNetBar.RibbonControl();
             this.styleManager2 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.radioButton8 = new System.Windows.Forms.RadioButton();
+            this.radioButton7 = new System.Windows.Forms.RadioButton();
+            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -48,13 +52,13 @@
             this.DTend = new System.Windows.Forms.DateTimePicker();
             this.DTbegin = new System.Windows.Forms.DateTimePicker();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.checkedComboBoxWithLable1 = new QuanMinFinancialStatement.CheckedComboBoxWithLable();
+            this.CheckedComboBoxWithLable = new QuanMinFinancialStatement.CheckedComboBoxWithLable();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.circularProgress1 = new DevComponents.DotNetBar.Controls.CircularProgress();
             this.dsQuan = new QuanMinFinancialStatement.dsQuan();
-            this.checkedComboBoxWithLable1 = new QuanMinFinancialStatement.CheckedComboBoxWithLable();
-            this.CheckedComboBoxWithLable = new QuanMinFinancialStatement.CheckedComboBoxWithLable();
             this.groupPanel1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -125,14 +129,18 @@
             this.groupPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
+            this.groupPanel1.Controls.Add(this.radioButton8);
+            this.groupPanel1.Controls.Add(this.radioButton7);
+            this.groupPanel1.Controls.Add(this.radioButton6);
+            this.groupPanel1.Controls.Add(this.radioButton3);
             this.groupPanel1.Controls.Add(this.radioButton4);
             this.groupPanel1.Controls.Add(this.radioButton5);
             this.groupPanel1.Controls.Add(this.radioButton2);
             this.groupPanel1.DisabledBackColor = System.Drawing.Color.Empty;
-            this.groupPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupPanel1.Location = new System.Drawing.Point(0, 0);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(242, 145);
+            this.groupPanel1.Size = new System.Drawing.Size(242, 192);
             // 
             // 
             // 
@@ -163,6 +171,54 @@
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel1.TabIndex = 1;
             this.groupPanel1.Text = "报表栏目";
+            // 
+            // radioButton8
+            // 
+            this.radioButton8.AutoSize = true;
+            this.radioButton8.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton8.Location = new System.Drawing.Point(18, 135);
+            this.radioButton8.Name = "radioButton8";
+            this.radioButton8.Size = new System.Drawing.Size(83, 16);
+            this.radioButton8.TabIndex = 0;
+            this.radioButton8.Text = "退卡记录表";
+            this.radioButton8.UseVisualStyleBackColor = false;
+            this.radioButton8.Click += new System.EventHandler(this.radioButton4_Click);
+            // 
+            // radioButton7
+            // 
+            this.radioButton7.AutoSize = true;
+            this.radioButton7.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton7.Location = new System.Drawing.Point(18, 113);
+            this.radioButton7.Name = "radioButton7";
+            this.radioButton7.Size = new System.Drawing.Size(95, 16);
+            this.radioButton7.TabIndex = 0;
+            this.radioButton7.Text = "期限卡统计表";
+            this.radioButton7.UseVisualStyleBackColor = false;
+            this.radioButton7.Click += new System.EventHandler(this.radioButton4_Click);
+            // 
+            // radioButton6
+            // 
+            this.radioButton6.AutoSize = true;
+            this.radioButton6.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton6.Location = new System.Drawing.Point(18, 91);
+            this.radioButton6.Name = "radioButton6";
+            this.radioButton6.Size = new System.Drawing.Size(83, 16);
+            this.radioButton6.TabIndex = 0;
+            this.radioButton6.Text = "次卡统计表";
+            this.radioButton6.UseVisualStyleBackColor = false;
+            this.radioButton6.Click += new System.EventHandler(this.radioButton6_Click);
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton3.Location = new System.Drawing.Point(18, 69);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(131, 16);
+            this.radioButton3.TabIndex = 0;
+            this.radioButton3.Text = "充值卡收支平衡报表";
+            this.radioButton3.UseVisualStyleBackColor = false;
+            this.radioButton3.Click += new System.EventHandler(this.radioButton3_Click);
             // 
             // radioButton4
             // 
@@ -319,6 +375,26 @@
             this.groupPanel2.TabIndex = 2;
             this.groupPanel2.Text = "查询条件";
             // 
+            // checkedComboBoxWithLable1
+            // 
+            this.checkedComboBoxWithLable1.BackColor = System.Drawing.Color.Transparent;
+            this.checkedComboBoxWithLable1.comboxText = "";
+            this.checkedComboBoxWithLable1.LableText = "操作员:";
+            this.checkedComboBoxWithLable1.Location = new System.Drawing.Point(7, 173);
+            this.checkedComboBoxWithLable1.Name = "checkedComboBoxWithLable1";
+            this.checkedComboBoxWithLable1.Size = new System.Drawing.Size(226, 31);
+            this.checkedComboBoxWithLable1.TabIndex = 19;
+            // 
+            // CheckedComboBoxWithLable
+            // 
+            this.CheckedComboBoxWithLable.BackColor = System.Drawing.Color.Transparent;
+            this.CheckedComboBoxWithLable.comboxText = "";
+            this.CheckedComboBoxWithLable.LableText = "卡 种:";
+            this.CheckedComboBoxWithLable.Location = new System.Drawing.Point(7, 136);
+            this.CheckedComboBoxWithLable.Name = "CheckedComboBoxWithLable";
+            this.CheckedComboBoxWithLable.Size = new System.Drawing.Size(226, 31);
+            this.CheckedComboBoxWithLable.TabIndex = 19;
+            // 
             // buttonX1
             // 
             this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -364,7 +440,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.groupPanel2);
             this.splitContainer2.Size = new System.Drawing.Size(242, 555);
-            this.splitContainer2.SplitterDistance = 158;
+            this.splitContainer2.SplitterDistance = 192;
             this.splitContainer2.TabIndex = 20;
             // 
             // circularProgress1
@@ -387,26 +463,6 @@
             // 
             this.dsQuan.DataSetName = "dsQuan";
             this.dsQuan.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // checkedComboBoxWithLable1
-            // 
-            this.checkedComboBoxWithLable1.BackColor = System.Drawing.Color.Transparent;
-            this.checkedComboBoxWithLable1.comboxText = "";
-            this.checkedComboBoxWithLable1.LableText = "操作员:";
-            this.checkedComboBoxWithLable1.Location = new System.Drawing.Point(7, 173);
-            this.checkedComboBoxWithLable1.Name = "checkedComboBoxWithLable1";
-            this.checkedComboBoxWithLable1.Size = new System.Drawing.Size(226, 31);
-            this.checkedComboBoxWithLable1.TabIndex = 19;
-            // 
-            // CheckedComboBoxWithLable
-            // 
-            this.CheckedComboBoxWithLable.BackColor = System.Drawing.Color.Transparent;
-            this.CheckedComboBoxWithLable.comboxText = "";
-            this.CheckedComboBoxWithLable.LableText = "卡 种:";
-            this.CheckedComboBoxWithLable.Location = new System.Drawing.Point(7, 136);
-            this.CheckedComboBoxWithLable.Name = "CheckedComboBoxWithLable";
-            this.CheckedComboBoxWithLable.Size = new System.Drawing.Size(226, 31);
-            this.CheckedComboBoxWithLable.TabIndex = 19;
             // 
             // Form1
             // 
@@ -461,6 +517,10 @@
         private CheckedComboBoxWithLable CheckedComboBoxWithLable;
         private CheckedComboBoxWithLable checkedComboBoxWithLable1;
         private DevComponents.DotNetBar.Controls.CircularProgress circularProgress1;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton8;
+        private System.Windows.Forms.RadioButton radioButton7;
+        private System.Windows.Forms.RadioButton radioButton6;
     }
 }
 

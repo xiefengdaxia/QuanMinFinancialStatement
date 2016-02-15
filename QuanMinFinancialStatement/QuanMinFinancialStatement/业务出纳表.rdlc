@@ -534,7 +534,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -592,7 +591,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>业务出纳表表</Value>
+                  <Value>业务出纳表</Value>
                   <Style>
                     <FontStyle>Normal</FontStyle>
                     <FontFamily>宋体</FontFamily>
