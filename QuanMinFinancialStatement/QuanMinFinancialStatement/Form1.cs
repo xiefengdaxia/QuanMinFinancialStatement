@@ -194,7 +194,7 @@ namespace QuanMinFinancialStatement
                     }
                     if (ischecked == 0)
                     {
-                        MessageBox.Show("请选择一个报表!", "友情提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                        MessageBox.Show("请选择一个报表!", "友情提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
 
@@ -311,13 +311,23 @@ namespace QuanMinFinancialStatement
                     (select SUM(time) from memcardlog where type=2 and memid=a.q_id) 充次,
                     (select SUM(time) from memcardlog where type=5 and memid=a.q_id) 扣次,
                      c.time 余次,  DATEDIFF ( d , a.joindate , a.closedate ) 天数,
-                     a.joindate 办卡日期,a.closedate 截止日期,
+                     convert(varchar,a.joindate,23) 办卡日期,convert(varchar,a.closedate,23) 截止日期,
                      (case when a.closedate>GETDATE() then '未过期' else '已过期' end) 是否过期 
                      from mem_member  a
                      inner join memcard c on a.q_id = c.memid 
-                     left join mem_kind b on a.memberkind=b.memberkind where b.name like '%%'
-                     order by 卡种";
+                     left join mem_kind b on a.memberkind=b.memberkind where b.name IN " + comboxTosqlString(CheckedComboBoxWithLable);
+                        sql += " and  a.joindate>='" + DTbegin.Text + "' and a.joindate<'" + DTend.Text + "'order by 卡种";
                         string rpName = "QuanMinFinancialStatement.次卡统计表.rdlc";
+                        baobiao(sql, rpName);
+                    }
+                    if (radioButton7.Checked == true)
+                    {
+                        string sql = @" select m_id 卡号,namec 姓名,b.name 卡种, (select count (*) from fitness_checkin where cardno=a.m_id)来场次数, DATEDIFF ( d , a.joindate , a.closedate ) 天数,
+                    convert(varchar,a.joindate,23) 办卡日期,convert(varchar,a.closedate,23) 截止日期,
+                     (case when a.closedate>GETDATE() then '未过期' else '已过期' end) 是否过期  from  mem_member a
+                     left join mem_kind b on a.memberkind=b.memberkind where b.name IN " + comboxTosqlString(CheckedComboBoxWithLable);
+                        sql += "and  a.joindate>='" + DTbegin.Text + "' and a.joindate<'" + DTend.Text + "'order by 来场次数 desc";
+                        string rpName = "QuanMinFinancialStatement.期限卡统计表.rdlc";
                         baobiao(sql, rpName);
                     }
                 }
@@ -327,32 +337,11 @@ namespace QuanMinFinancialStatement
                 }
 
             });
-            worker.Start(); 
-            
+            worker.Start();
+
 
         }
-        //CheckedComboBox ccb1;
-        //CheckedComboBox ccb2;
-        ComboBox cb;
-        TextBox txtBox;
-        private void radioButton5_Click(object sender, EventArgs e)
-        {
-            
 
-            cb = Add_ComboBox(cb, DTend, "select NAMEC from sys_workshop", "营业点:");
-
-            //ccb1 = Add_CheckedComboBox(ccb1, cb, "select user_namec from sys_user", "操作员:");
-            //ccb2 = Add_CheckedComboBox(ccb2, ccb1, "select mem_kind.name from mem_kind", "卡 种:");
-            CheckedComboBoxWithLable.LableText = "操作员:";
-            setCombo("select user_namec from sys_user", CheckedComboBoxWithLable);
-
-            checkedComboBoxWithLable1.LableText = "卡 种:";
-            setCombo("select mem_kind.name from mem_kind", checkedComboBoxWithLable1);
-
-            cb.Visible = true;
-            CheckedComboBoxWithLable.Visible = true;
-            checkedComboBoxWithLable1.Visible = true;
-        }
 
         private CheckedComboBox Add_CheckedComboBox(CheckedComboBox ccb, Control above_crl, string sql, string lableText)
         {
@@ -419,27 +408,82 @@ namespace QuanMinFinancialStatement
             return sql_plus;
         }
 
+        /// <summary>
+        /// 清除非默认需要的控件
+        /// </summary>
+        private void clearControl()
+        {
+            groupPanel2.Controls.Remove(cb);
+            groupPanel2.Controls.Remove(txtBox);
+            foreach (Control ctl in groupPanel2.Controls)
+            {
+                if (ctl is System.Windows.Forms.Label)
+                {
+                    if (!ctl.Text.Contains("日期"))
+                    {
+                        this.groupPanel2.Controls.Remove(ctl);
+                    }
+                }
+                //if (ctl is System.Windows.Forms.TextBox || ctl is System.Windows.Forms.ComboBox || ctl is QuanMinFinancialStatement.CheckedComboBox)
+                //{
+                //    this.groupPanel2.Controls.Remove(ctl);
+                //}
+            }
+            groupPanel2.Refresh();
+        }
+        //CheckedComboBox ccb1;
+        //CheckedComboBox ccb2;
+        ComboBox cb;
+        TextBox txtBox;
+        private void radioButton5_Click(object sender, EventArgs e)
+        {
+            clearControl();
+            cb = Add_ComboBox(cb, DTend, "select NAMEC from sys_workshop", "营业点:");
+            //ccb1 = Add_CheckedComboBox(ccb1, cb, "select user_namec from sys_user", "操作员:");
+            //ccb2 = Add_CheckedComboBox(ccb2, ccb1, "select mem_kind.name from mem_kind", "卡 种:");
+            CheckedComboBoxWithLable.LableText = "操作员:";
+            setCombo("select user_namec from sys_user", CheckedComboBoxWithLable);
+
+            checkedComboBoxWithLable1.LableText = "卡 种:";
+            setCombo("select mem_kind.name from mem_kind", checkedComboBoxWithLable1);
+
+            //cb.Visible = true;
+            CheckedComboBoxWithLable.Visible = true;
+            checkedComboBoxWithLable1.Visible = true;
+        }
+
         private void radioButton2_Click(object sender, EventArgs e)
         {
+            clearControl();
             cb = Add_ComboBox(cb, DTend, "select NAMEC from sys_workshop", "营业点:");
-            cb.Visible = true;
+            //cb.Visible = true;
             CheckedComboBoxWithLable.Visible = true;
             checkedComboBoxWithLable1.Visible = false;
             CheckedComboBoxWithLable.LableText = "操作员:";
             setCombo("select user_namec from sys_user", CheckedComboBoxWithLable);
-            
         }
 
         private void radioButton4_Click(object sender, EventArgs e)
         {
+            clearControl();
             cb = Add_ComboBox(cb, DTend, "select NAMEC from sys_workshop", "营业点:");
-            cb.Visible = true;
+            //cb.Visible = true;
             CheckedComboBoxWithLable.Visible = false;
             checkedComboBoxWithLable1.Visible = false;
         }
 
         private void radioButton3_Click(object sender, EventArgs e)
         {
+            clearControl();
+            CheckedComboBoxWithLable.LableText = "卡 种:";
+            setCombo("select mem_kind.name from mem_kind", CheckedComboBoxWithLable);
+            CheckedComboBoxWithLable.Visible = true;
+            checkedComboBoxWithLable1.Visible = false;
+        }
+
+        private void radioButton6_Click(object sender, EventArgs e)
+        {
+            clearControl();
             CheckedComboBoxWithLable.LableText = "卡 种:";
             setCombo("select mem_kind.name from mem_kind", CheckedComboBoxWithLable);
             CheckedComboBoxWithLable.Visible = true;
@@ -447,9 +491,14 @@ namespace QuanMinFinancialStatement
             txtBox = add_TextBox(txtBox, CheckedComboBoxWithLable, "卡 号:");
         }
 
-        private void radioButton6_Click(object sender, EventArgs e)
+        private void radioButton7_Click(object sender, EventArgs e)
         {
-
+            clearControl();
+            CheckedComboBoxWithLable.LableText = "卡 种:";
+            setCombo("select mem_kind.name from mem_kind", CheckedComboBoxWithLable);
+            CheckedComboBoxWithLable.Visible = true;
+            checkedComboBoxWithLable1.Visible = false;
+            txtBox = add_TextBox(txtBox, CheckedComboBoxWithLable, "卡 号:");
         }
 
     }

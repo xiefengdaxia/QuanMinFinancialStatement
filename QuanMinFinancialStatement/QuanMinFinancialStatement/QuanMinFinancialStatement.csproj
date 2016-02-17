@@ -63,6 +63,10 @@
     <Compile Include="CheckedCombobox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="dsQuan.cs">
+      <DependentUpon>dsQuan.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="dsQuan.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -101,6 +105,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="业务出纳表.rdlc" />
     <EmbeddedResource Include="充值卡收支平衡报表.rdlc" />
+    <EmbeddedResource Include="期限卡统计表.rdlc" />
     <EmbeddedResource Include="次卡统计表.rdlc" />
     <EmbeddedResource Include="各营业点充值卡消费统计表.rdlc" />
     <EmbeddedResource Include="各营业点账务统计表.rdlc" />

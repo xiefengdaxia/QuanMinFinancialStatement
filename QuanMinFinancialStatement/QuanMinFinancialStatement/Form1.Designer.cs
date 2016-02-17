@@ -80,6 +80,7 @@
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "QuanMinFinancialStatement.业务出纳表.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.PageCountMode = Microsoft.Reporting.WinForms.PageCountMode.Actual;
             this.reportViewer1.Size = new System.Drawing.Size(767, 555);
             this.reportViewer1.TabIndex = 0;
             // 
@@ -194,7 +195,7 @@
             this.radioButton7.TabIndex = 0;
             this.radioButton7.Text = "期限卡统计表";
             this.radioButton7.UseVisualStyleBackColor = false;
-            this.radioButton7.Click += new System.EventHandler(this.radioButton4_Click);
+            this.radioButton7.Click += new System.EventHandler(this.radioButton7_Click);
             // 
             // radioButton6
             // 
