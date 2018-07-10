@@ -213,7 +213,7 @@ namespace QuanMinFinancialStatement
                         sql += "AND (c.name is null or c.name IN " + comboxTosqlString(checkedComboBoxWithLable1);
                         sql += ")	AND e.namec LIKE '%" + cb.Text + "%'";
                         sql += "	AND a.closedate >= '" + DTbegin.Text + "'";
-                        sql += "	AND a.closedate < '" + DTend.Text + "'";
+                        sql += "	AND a.closedate < '" + EndDatePlus1Day(DTend.Text) + "'";
                         sql += "	AND a.bill_status = 1 GROUP BY c.name";
                         string rpName = "QuanMinFinancialStatement.业务出纳表.rdlc";
                         baobiao(sql, rpName);
@@ -226,7 +226,7 @@ namespace QuanMinFinancialStatement
                 left join sys_user c on a.userid=c.empid
                 right join (select distinct billcode from pos_sales where (itemcode  in('99995','99987','99996')or parent_kinds = '$76' )and rec_status=1 and pay_status=1) f on f.billcode=a.billcode ";
                         sql += "where 1=1 and a.payparent in ('0001','0002') and b.NAMEC like '%" + cb.Text + "%'";
-                        sql += "	AND a.paydate>='" + DTbegin.Text + "' and a.paydate<'" + DTend.Text + "'";
+                        sql += "	AND a.paydate>='" + DTbegin.Text + "' and a.paydate<'" + EndDatePlus1Day(DTend.Text) + "'";
                         sql += "   AND c.USER_NAMEC in " + comboxTosqlString(CheckedComboBoxWithLable);
                         sql += "group by b.NAMEC,c.user_namec order by b.NAMEC";
                         string rpName = "QuanMinFinancialStatement.各营业点账务统计表.rdlc";
@@ -246,7 +246,7 @@ namespace QuanMinFinancialStatement
                 where 1=1 and
                 a.paymethod = b.code 
                 and a.payshop = c.shop_code ";
-                        sql += "and a.paydate >= '" + DTbegin.Text + "' and a.paydate < '" + DTend.Text + "' ";
+                        sql += "and a.paydate >= '" + DTbegin.Text + "' and a.paydate < '" + EndDatePlus1Day(DTend.Text) + "' ";
                         sql += "and c.namec LIKE '%" + cb.Text + "%'";
                         sql += @"and a.rec_status = 1 
                 and a.payamount<>0
@@ -300,7 +300,7 @@ namespace QuanMinFinancialStatement
                           a.cardbalance 余额,
                           a.joindate 办卡日期
                         from 
-                            mem_member a left join mem_kind b on a.memberkind=b.memberkind where a.joindate >= '" + DTbegin.Text + "' and a.joindate < '" + DTend.Text + "' and a.m_id like '%" + txtBox.Text + "%'";
+                            mem_member a left join mem_kind b on a.memberkind=b.memberkind where a.joindate >= '" + DTbegin.Text + "' and a.joindate < '" + EndDatePlus1Day(DTend.Text) + "' and a.m_id like '%" + txtBox.Text + "%'";
                         sql += "AND b.name IN " + comboxTosqlString(CheckedComboBoxWithLable);
                         string rpName = "QuanMinFinancialStatement.充值卡收支平衡报表.rdlc";
                         baobiao(sql, rpName);
@@ -316,7 +316,14 @@ namespace QuanMinFinancialStatement
                      from mem_member  a
                      inner join memcard c on a.q_id = c.memid 
                      left join mem_kind b on a.memberkind=b.memberkind where b.name IN " + comboxTosqlString(CheckedComboBoxWithLable);
-                        sql += " and  a.joindate>='" + DTbegin.Text + "' and a.joindate<'" + DTend.Text + "'order by 卡种";
+                        sql += " and  a.joindate>='" + DTbegin.Text + "' and a.joindate<'" + EndDatePlus1Day(DTend.Text)+"'";
+                        switch (cb.Text)
+                        {
+                            case "未过期": sql += "and a.closedate>GETDATE()"; break;
+                            case "已过期": sql += "and a.closedate<=GETDATE()"; break;
+                            default: ; ; break;
+                        }
+                        sql+="order by 卡种";
                         string rpName = "QuanMinFinancialStatement.次卡统计表.rdlc";
                         baobiao(sql, rpName);
                     }
@@ -326,8 +333,32 @@ namespace QuanMinFinancialStatement
                     convert(varchar,a.joindate,23) 办卡日期,convert(varchar,a.closedate,23) 截止日期,
                      (case when a.closedate>GETDATE() then '未过期' else '已过期' end) 是否过期  from  mem_member a
                      left join mem_kind b on a.memberkind=b.memberkind where b.name IN " + comboxTosqlString(CheckedComboBoxWithLable);
-                        sql += "and  a.joindate>='" + DTbegin.Text + "' and a.joindate<'" + DTend.Text + "'order by 来场次数 desc";
+                        sql += "and  a.joindate>='" + DTbegin.Text + "' and a.joindate<'" + EndDatePlus1Day(DTend.Text) + "'";
+                        switch (cb.Text)
+                        {
+                            case "未过期": sql += "and a.closedate>GETDATE()"; break;
+                            case "已过期": sql += "and a.closedate<=GETDATE()"; break;
+                            default: ; ; break;
+                        }
+                        sql+="order by 来场次数 desc";
                         string rpName = "QuanMinFinancialStatement.期限卡统计表.rdlc";
+                        baobiao(sql, rpName);
+                    }
+                    if (radioButton8.Checked == true)
+                    {
+                        string sql = @" select e.NAMEC,f.USER_NAMEC,cardno 卡号,a.name 姓名,c.name 卡种,(select top 1 timebalance from memcardlog where cardno=a.cardno order by usertime desc) 余次, case when (DATEDIFF ( d , GETDATE() , b.closedate )<0 )then 0 else DATEDIFF ( d , GETDATE() , b.closedate ) end 天数,totalbalance 卡内余额,timebalance 退卡金额,usertime 退卡时间 from t_fsl_memquit a
+                         left join mem_member b on a.cardno=b.m_id
+                         left join mem_kind c on b.memberkind=c.memberkind
+                         left join memcard d on b.q_id = d.memid 
+                         left join sys_workshop e on a.workshop=e.SHOP_CODE
+                         left join SYS_USER f on a.usercode=f.empid";
+                        sql += " where a.usertime>='" + DTbegin.Text + "' and a.usertime<'" + EndDatePlus1Day(DTend.Text) + "'";
+                        sql += " and c.name IN " + comboxTosqlString(CheckedComboBoxWithLable);
+                        sql += " and f.USER_NAMEC in " + comboxTosqlString(checkedComboBoxWithLable1);
+                        sql += " and e.NAMEC like '%"+cb.Text+"%'";
+                        sql += " and a.cardno like '%" + txtBox.Text + "%'";
+                        sql+=" order by usertime ";
+                        string rpName = "QuanMinFinancialStatement.退卡记录表.rdlc";
                         baobiao(sql, rpName);
                     }
                 }
@@ -342,6 +373,17 @@ namespace QuanMinFinancialStatement
 
         }
 
+        DateTime dt;
+        /// <summary>
+        /// 原有日期加一天用作截止日期
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        private string EndDatePlus1Day(string date)
+        {
+            dt = Convert.ToDateTime(date).AddDays(1);
+            return dt.ToString("yyyy-MM-dd");
+        }
 
         private CheckedComboBox Add_CheckedComboBox(CheckedComboBox ccb, Control above_crl, string sql, string lableText)
         {
@@ -351,7 +393,7 @@ namespace QuanMinFinancialStatement
             ccb.Left = above_crl.Left;
             groupPanel2.Controls.Add(ccb);
 
-            Label l = new Label();
+            l = new Label();
             l.Text = lableText;
             l.Top = above_crl.Top + above_crl.Height + 16;
             l.Left = label1.Left;
@@ -368,7 +410,7 @@ namespace QuanMinFinancialStatement
             txtbox.Width = 119;
             txtbox.Text = "%";
             groupPanel2.Controls.Add(txtbox);
-            Label l = new Label();
+            l = new Label();
             l.Text = lableText;
             l.Top = above_crl.Top + above_crl.Height + 16;
             l.Left = label1.Left;
@@ -387,12 +429,25 @@ namespace QuanMinFinancialStatement
         private ComboBox Add_ComboBox(ComboBox cb, Control above_crl, string sql, string lableText)
         {
             cb = new ComboBox();
-            setCombo(sql, cb);
+            if (sql != null)
+            {
+                setCombo(sql, cb);
+            }
+            else
+            {
+                //cb.Text = "%";
+                cb.Items.Clear();
+                cb.Items.Add("%");
+                cb.Items.Add("未过期");
+                cb.Items.Add("已过期");
+                cb.DropDownStyle =ComboBoxStyle.DropDownList;
+                cb.SelectedIndex = 0;
+            }
             cb.Top = above_crl.Top + above_crl.Height + 13;
             cb.Left = above_crl.Left;
             groupPanel2.Controls.Add(cb);
 
-            Label l = new Label();
+            l = new Label();
             l.Text = lableText;
             l.Top = above_crl.Top + above_crl.Height + 16;
             l.Left = label1.Left;
@@ -415,6 +470,9 @@ namespace QuanMinFinancialStatement
         {
             groupPanel2.Controls.Remove(cb);
             groupPanel2.Controls.Remove(txtBox);
+            groupPanel2.Controls.Remove(l);
+            CheckedComboBoxWithLable.reset();
+            checkedComboBoxWithLable1.reset();
             foreach (Control ctl in groupPanel2.Controls)
             {
                 if (ctl is System.Windows.Forms.Label)
@@ -435,6 +493,7 @@ namespace QuanMinFinancialStatement
         //CheckedComboBox ccb2;
         ComboBox cb;
         TextBox txtBox;
+        Label l;
         private void radioButton5_Click(object sender, EventArgs e)
         {
             clearControl();
@@ -479,6 +538,7 @@ namespace QuanMinFinancialStatement
             setCombo("select mem_kind.name from mem_kind", CheckedComboBoxWithLable);
             CheckedComboBoxWithLable.Visible = true;
             checkedComboBoxWithLable1.Visible = false;
+            txtBox = add_TextBox(txtBox, CheckedComboBoxWithLable, "卡 号:");
         }
 
         private void radioButton6_Click(object sender, EventArgs e)
@@ -489,6 +549,7 @@ namespace QuanMinFinancialStatement
             CheckedComboBoxWithLable.Visible = true;
             checkedComboBoxWithLable1.Visible = false;
             txtBox = add_TextBox(txtBox, CheckedComboBoxWithLable, "卡 号:");
+            cb = Add_ComboBox(cb, txtBox, null, "过期?:");
         }
 
         private void radioButton7_Click(object sender, EventArgs e)
@@ -499,6 +560,20 @@ namespace QuanMinFinancialStatement
             CheckedComboBoxWithLable.Visible = true;
             checkedComboBoxWithLable1.Visible = false;
             txtBox = add_TextBox(txtBox, CheckedComboBoxWithLable, "卡 号:");
+            cb = Add_ComboBox(cb, txtBox, null, "过期?:");
+        }
+
+        private void radioButton8_Click(object sender, EventArgs e)
+        {
+            clearControl();
+            CheckedComboBoxWithLable.LableText = "卡 种:";
+            setCombo("select mem_kind.name from mem_kind", CheckedComboBoxWithLable);
+            checkedComboBoxWithLable1.LableText = "操作员:";
+            setCombo("select user_namec from sys_user", checkedComboBoxWithLable1);
+            CheckedComboBoxWithLable.Visible = true;
+            checkedComboBoxWithLable1.Visible = true;
+            txtBox = add_TextBox(txtBox, checkedComboBoxWithLable1, "卡 号:");
+            cb = Add_ComboBox(cb, DTend, "select NAMEC from sys_workshop", "营业点:");
         }
 
     }

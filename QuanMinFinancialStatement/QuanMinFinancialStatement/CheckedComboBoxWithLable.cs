@@ -50,5 +50,16 @@ namespace QuanMinFinancialStatement
         {
             checkedComboBox1.Items.Clear();
         }
+        /// <summary>
+        /// 将自定义控件恢复默认设置
+        /// </summary>
+        public void reset()
+        {
+            for (int i = 0; i < checkedComboBox1.Items.Count; i++)
+            {
+                checkedComboBox1.SetItemChecked(i, false);
+            }
+            checkBox1.Checked = false;
+        }
     }
 }

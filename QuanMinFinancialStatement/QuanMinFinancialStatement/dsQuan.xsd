@@ -12,7 +12,7 @@
   <xs:element name="dsQuan" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsQuan" msprop:Generator_UserDSName="dsQuan">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="mem_sale_all" msprop:Generator_TableClassName="mem_sale_allDataTable" msprop:Generator_TableVarName="tablemem_sale_all" msprop:Generator_RowChangedName="mem_sale_allRowChanged" msprop:Generator_TablePropName="mem_sale_all" msprop:Generator_RowDeletingName="mem_sale_allRowDeleting" msprop:Generator_RowChangingName="mem_sale_allRowChanging" msprop:Generator_RowEvHandlerName="mem_sale_allRowChangeEventHandler" msprop:Generator_RowDeletedName="mem_sale_allRowDeleted" msprop:Generator_RowClassName="mem_sale_allRow" msprop:Generator_UserTableName="mem_sale_all" msprop:Generator_RowEvArgName="mem_sale_allRowChangeEvent">
+        <xs:element name="mem_sale_all" msprop:Generator_TableClassName="mem_sale_allDataTable" msprop:Generator_TableVarName="tablemem_sale_all" msprop:Generator_TablePropName="mem_sale_all" msprop:Generator_RowDeletingName="mem_sale_allRowDeleting" msprop:Generator_RowChangingName="mem_sale_allRowChanging" msprop:Generator_RowEvHandlerName="mem_sale_allRowChangeEventHandler" msprop:Generator_RowDeletedName="mem_sale_allRowDeleted" msprop:Generator_UserTableName="mem_sale_all" msprop:Generator_RowChangedName="mem_sale_allRowChanged" msprop:Generator_RowEvArgName="mem_sale_allRowChangeEvent" msprop:Generator_RowClassName="mem_sale_allRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="会籍种类" msprop:Generator_ColumnVarNameInTable="column会籍种类" msprop:Generator_ColumnPropNameInRow="会籍种类" msprop:Generator_ColumnPropNameInTable="会籍种类Column" msprop:Generator_UserColumnName="会籍种类" type="xs:string" minOccurs="0" />
@@ -22,7 +22,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="mem_sale_for_payshop1" msprop:Generator_TableClassName="mem_sale_for_payshop1DataTable" msprop:Generator_TableVarName="tablemem_sale_for_payshop1" msprop:Generator_TablePropName="mem_sale_for_payshop1" msprop:Generator_RowDeletingName="mem_sale_for_payshop1RowDeleting" msprop:Generator_RowChangingName="mem_sale_for_payshop1RowChanging" msprop:Generator_RowEvHandlerName="mem_sale_for_payshop1RowChangeEventHandler" msprop:Generator_RowDeletedName="mem_sale_for_payshop1RowDeleted" msprop:Generator_UserTableName="mem_sale_for_payshop1" msprop:Generator_RowChangedName="mem_sale_for_payshop1RowChanged" msprop:Generator_RowEvArgName="mem_sale_for_payshop1RowChangeEvent" msprop:Generator_RowClassName="mem_sale_for_payshop1Row">
+        <xs:element name="mem_sale_for_payshop1" msprop:Generator_TableClassName="mem_sale_for_payshop1DataTable" msprop:Generator_TableVarName="tablemem_sale_for_payshop1" msprop:Generator_RowChangedName="mem_sale_for_payshop1RowChanged" msprop:Generator_TablePropName="mem_sale_for_payshop1" msprop:Generator_RowDeletingName="mem_sale_for_payshop1RowDeleting" msprop:Generator_RowChangingName="mem_sale_for_payshop1RowChanging" msprop:Generator_RowEvHandlerName="mem_sale_for_payshop1RowChangeEventHandler" msprop:Generator_RowDeletedName="mem_sale_for_payshop1RowDeleted" msprop:Generator_RowClassName="mem_sale_for_payshop1Row" msprop:Generator_UserTableName="mem_sale_for_payshop1" msprop:Generator_RowEvArgName="mem_sale_for_payshop1RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="营业点" msprop:Generator_ColumnVarNameInTable="column营业点" msprop:Generator_ColumnPropNameInRow="营业点" msprop:Generator_ColumnPropNameInTable="营业点Column" msprop:Generator_UserColumnName="营业点" type="xs:string" minOccurs="0" />
@@ -33,7 +33,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="card_pay_all" msprop:Generator_TableClassName="card_pay_allDataTable" msprop:Generator_TableVarName="tablecard_pay_all" msprop:Generator_TablePropName="card_pay_all" msprop:Generator_RowDeletingName="card_pay_allRowDeleting" msprop:Generator_RowChangingName="card_pay_allRowChanging" msprop:Generator_RowEvHandlerName="card_pay_allRowChangeEventHandler" msprop:Generator_RowDeletedName="card_pay_allRowDeleted" msprop:Generator_UserTableName="card_pay_all" msprop:Generator_RowChangedName="card_pay_allRowChanged" msprop:Generator_RowEvArgName="card_pay_allRowChangeEvent" msprop:Generator_RowClassName="card_pay_allRow">
+        <xs:element name="card_pay_all" msprop:Generator_TableClassName="card_pay_allDataTable" msprop:Generator_TableVarName="tablecard_pay_all" msprop:Generator_RowChangedName="card_pay_allRowChanged" msprop:Generator_TablePropName="card_pay_all" msprop:Generator_RowDeletingName="card_pay_allRowDeleting" msprop:Generator_RowChangingName="card_pay_allRowChanging" msprop:Generator_RowEvHandlerName="card_pay_allRowChangeEventHandler" msprop:Generator_RowDeletedName="card_pay_allRowDeleted" msprop:Generator_RowClassName="card_pay_allRow" msprop:Generator_UserTableName="card_pay_all" msprop:Generator_RowEvArgName="card_pay_allRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="营业点" msprop:Generator_ColumnVarNameInTable="column营业点" msprop:Generator_ColumnPropNameInRow="营业点" msprop:Generator_ColumnPropNameInTable="营业点Column" msprop:Generator_UserColumnName="营业点" type="xs:string" minOccurs="0" />
@@ -43,7 +43,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="card_Prepaid_consumption" msprop:Generator_TableClassName="card_Prepaid_consumptionDataTable" msprop:Generator_TableVarName="tablecard_Prepaid_consumption" msprop:Generator_RowChangedName="card_Prepaid_consumptionRowChanged" msprop:Generator_TablePropName="card_Prepaid_consumption" msprop:Generator_RowDeletingName="card_Prepaid_consumptionRowDeleting" msprop:Generator_RowChangingName="card_Prepaid_consumptionRowChanging" msprop:Generator_RowEvHandlerName="card_Prepaid_consumptionRowChangeEventHandler" msprop:Generator_RowDeletedName="card_Prepaid_consumptionRowDeleted" msprop:Generator_RowClassName="card_Prepaid_consumptionRow" msprop:Generator_UserTableName="card_Prepaid_consumption" msprop:Generator_RowEvArgName="card_Prepaid_consumptionRowChangeEvent">
+        <xs:element name="card_Prepaid_consumption" msprop:Generator_TableClassName="card_Prepaid_consumptionDataTable" msprop:Generator_TableVarName="tablecard_Prepaid_consumption" msprop:Generator_TablePropName="card_Prepaid_consumption" msprop:Generator_RowDeletingName="card_Prepaid_consumptionRowDeleting" msprop:Generator_RowChangingName="card_Prepaid_consumptionRowChanging" msprop:Generator_RowEvHandlerName="card_Prepaid_consumptionRowChangeEventHandler" msprop:Generator_RowDeletedName="card_Prepaid_consumptionRowDeleted" msprop:Generator_UserTableName="card_Prepaid_consumption" msprop:Generator_RowChangedName="card_Prepaid_consumptionRowChanged" msprop:Generator_RowEvArgName="card_Prepaid_consumptionRowChangeEvent" msprop:Generator_RowClassName="card_Prepaid_consumptionRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="卡号" msprop:Generator_ColumnVarNameInTable="column卡号" msprop:Generator_ColumnPropNameInRow="卡号" msprop:Generator_ColumnPropNameInTable="卡号Column" msprop:Generator_UserColumnName="卡号" type="xs:string" minOccurs="0" />
@@ -56,7 +56,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="time_card_statistics" msprop:Generator_TableClassName="time_card_statisticsDataTable" msprop:Generator_TableVarName="tabletime_card_statistics" msprop:Generator_RowChangedName="time_card_statisticsRowChanged" msprop:Generator_TablePropName="time_card_statistics" msprop:Generator_RowDeletingName="time_card_statisticsRowDeleting" msprop:Generator_RowChangingName="time_card_statisticsRowChanging" msprop:Generator_RowEvHandlerName="time_card_statisticsRowChangeEventHandler" msprop:Generator_RowDeletedName="time_card_statisticsRowDeleted" msprop:Generator_RowClassName="time_card_statisticsRow" msprop:Generator_UserTableName="time_card_statistics" msprop:Generator_RowEvArgName="time_card_statisticsRowChangeEvent">
+        <xs:element name="time_card_statistics" msprop:Generator_TableClassName="time_card_statisticsDataTable" msprop:Generator_TableVarName="tabletime_card_statistics" msprop:Generator_TablePropName="time_card_statistics" msprop:Generator_RowDeletingName="time_card_statisticsRowDeleting" msprop:Generator_RowChangingName="time_card_statisticsRowChanging" msprop:Generator_RowEvHandlerName="time_card_statisticsRowChangeEventHandler" msprop:Generator_RowDeletedName="time_card_statisticsRowDeleted" msprop:Generator_UserTableName="time_card_statistics" msprop:Generator_RowChangedName="time_card_statisticsRowChanged" msprop:Generator_RowEvArgName="time_card_statisticsRowChangeEvent" msprop:Generator_RowClassName="time_card_statisticsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="卡号" msprop:Generator_ColumnVarNameInTable="column卡号" msprop:Generator_ColumnPropNameInRow="卡号" msprop:Generator_ColumnPropNameInTable="卡号Column" msprop:Generator_UserColumnName="卡号" type="xs:string" minOccurs="0" />
@@ -72,7 +72,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="date_card_statistics" msprop:Generator_TableClassName="date_card_statisticsDataTable" msprop:Generator_TableVarName="tabledate_card_statistics" msprop:Generator_TablePropName="date_card_statistics" msprop:Generator_RowDeletingName="date_card_statisticsRowDeleting" msprop:Generator_RowChangingName="date_card_statisticsRowChanging" msprop:Generator_RowEvHandlerName="date_card_statisticsRowChangeEventHandler" msprop:Generator_RowDeletedName="date_card_statisticsRowDeleted" msprop:Generator_UserTableName="date_card_statistics" msprop:Generator_RowChangedName="date_card_statisticsRowChanged" msprop:Generator_RowEvArgName="date_card_statisticsRowChangeEvent" msprop:Generator_RowClassName="date_card_statisticsRow">
+        <xs:element name="date_card_statistics" msprop:Generator_TableClassName="date_card_statisticsDataTable" msprop:Generator_TableVarName="tabledate_card_statistics" msprop:Generator_RowChangedName="date_card_statisticsRowChanged" msprop:Generator_TablePropName="date_card_statistics" msprop:Generator_RowDeletingName="date_card_statisticsRowDeleting" msprop:Generator_RowChangingName="date_card_statisticsRowChanging" msprop:Generator_RowEvHandlerName="date_card_statisticsRowChangeEventHandler" msprop:Generator_RowDeletedName="date_card_statisticsRowDeleted" msprop:Generator_RowClassName="date_card_statisticsRow" msprop:Generator_UserTableName="date_card_statistics" msprop:Generator_RowEvArgName="date_card_statisticsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="卡号" msprop:Generator_ColumnVarNameInTable="column卡号" msprop:Generator_ColumnPropNameInRow="卡号" msprop:Generator_ColumnPropNameInTable="卡号Column" msprop:Generator_UserColumnName="卡号" type="xs:string" minOccurs="0" />
@@ -83,6 +83,20 @@
               <xs:element name="办卡日期" msprop:Generator_ColumnVarNameInTable="column办卡日期" msprop:Generator_ColumnPropNameInRow="办卡日期" msprop:Generator_ColumnPropNameInTable="办卡日期Column" msprop:Generator_UserColumnName="办卡日期" type="xs:string" minOccurs="0" />
               <xs:element name="截止日期" msprop:Generator_ColumnVarNameInTable="column截止日期" msprop:Generator_ColumnPropNameInRow="截止日期" msprop:Generator_ColumnPropNameInTable="截止日期Column" msprop:Generator_UserColumnName="截止日期" type="xs:string" minOccurs="0" />
               <xs:element name="是否过期" msprop:Generator_ColumnVarNameInTable="column是否过期" msprop:Generator_ColumnPropNameInRow="是否过期" msprop:Generator_ColumnPropNameInTable="是否过期Column" msprop:Generator_UserColumnName="是否过期" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="t_fsl_memquit" msprop:Generator_TableClassName="t_fsl_memquitDataTable" msprop:Generator_TableVarName="tablet_fsl_memquit" msprop:Generator_TablePropName="t_fsl_memquit" msprop:Generator_RowDeletingName="t_fsl_memquitRowDeleting" msprop:Generator_RowChangingName="t_fsl_memquitRowChanging" msprop:Generator_RowEvHandlerName="t_fsl_memquitRowChangeEventHandler" msprop:Generator_RowDeletedName="t_fsl_memquitRowDeleted" msprop:Generator_UserTableName="t_fsl_memquit" msprop:Generator_RowChangedName="t_fsl_memquitRowChanged" msprop:Generator_RowEvArgName="t_fsl_memquitRowChangeEvent" msprop:Generator_RowClassName="t_fsl_memquitRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="卡号" msprop:Generator_ColumnVarNameInTable="column卡号" msprop:Generator_ColumnPropNameInRow="卡号" msprop:Generator_ColumnPropNameInTable="卡号Column" msprop:Generator_UserColumnName="卡号" type="xs:string" minOccurs="0" />
+              <xs:element name="姓名" msprop:Generator_ColumnVarNameInTable="column姓名" msprop:Generator_ColumnPropNameInRow="姓名" msprop:Generator_ColumnPropNameInTable="姓名Column" msprop:Generator_UserColumnName="姓名" type="xs:string" minOccurs="0" />
+              <xs:element name="卡种" msprop:Generator_ColumnVarNameInTable="column卡种" msprop:Generator_ColumnPropNameInRow="卡种" msprop:Generator_ColumnPropNameInTable="卡种Column" msprop:Generator_UserColumnName="卡种" type="xs:string" minOccurs="0" />
+              <xs:element name="余次" msprop:Generator_ColumnVarNameInTable="column余次" msprop:Generator_ColumnPropNameInRow="余次" msprop:Generator_ColumnPropNameInTable="余次Column" msprop:Generator_UserColumnName="余次" type="xs:string" minOccurs="0" />
+              <xs:element name="天数" msprop:Generator_ColumnVarNameInTable="column天数" msprop:Generator_ColumnPropNameInRow="天数" msprop:Generator_ColumnPropNameInTable="天数Column" msprop:Generator_UserColumnName="天数" type="xs:string" minOccurs="0" />
+              <xs:element name="卡内余额" msprop:Generator_ColumnVarNameInTable="column卡内余额" msprop:Generator_ColumnPropNameInRow="卡内余额" msprop:Generator_ColumnPropNameInTable="卡内余额Column" msprop:Generator_UserColumnName="卡内余额" type="xs:string" minOccurs="0" />
+              <xs:element name="退卡金额" msprop:Generator_ColumnVarNameInTable="column退卡金额" msprop:Generator_ColumnPropNameInRow="退卡金额" msprop:Generator_ColumnPropNameInTable="退卡金额Column" msprop:Generator_UserColumnName="退卡金额" type="xs:string" minOccurs="0" />
+              <xs:element name="退卡时间" msprop:Generator_ColumnVarNameInTable="column退卡时间" msprop:Generator_ColumnPropNameInRow="退卡时间" msprop:Generator_ColumnPropNameInTable="退卡时间Column" msprop:Generator_UserColumnName="退卡时间" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

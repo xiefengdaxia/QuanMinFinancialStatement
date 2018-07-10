@@ -36,6 +36,8 @@ namespace QuanMinFinancialStatement {
         
         private date_card_statisticsDataTable tabledate_card_statistics;
         
+        private t_fsl_memquitDataTable tablet_fsl_memquit;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -81,6 +83,9 @@ namespace QuanMinFinancialStatement {
                 }
                 if ((ds.Tables["date_card_statistics"] != null)) {
                     base.Tables.Add(new date_card_statisticsDataTable(ds.Tables["date_card_statistics"]));
+                }
+                if ((ds.Tables["t_fsl_memquit"] != null)) {
+                    base.Tables.Add(new t_fsl_memquitDataTable(ds.Tables["t_fsl_memquit"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -157,6 +162,16 @@ namespace QuanMinFinancialStatement {
         public date_card_statisticsDataTable date_card_statistics {
             get {
                 return this.tabledate_card_statistics;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public t_fsl_memquitDataTable t_fsl_memquit {
+            get {
+                return this.tablet_fsl_memquit;
             }
         }
         
@@ -245,6 +260,9 @@ namespace QuanMinFinancialStatement {
                 if ((ds.Tables["date_card_statistics"] != null)) {
                     base.Tables.Add(new date_card_statisticsDataTable(ds.Tables["date_card_statistics"]));
                 }
+                if ((ds.Tables["t_fsl_memquit"] != null)) {
+                    base.Tables.Add(new t_fsl_memquitDataTable(ds.Tables["t_fsl_memquit"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -314,6 +332,12 @@ namespace QuanMinFinancialStatement {
                     this.tabledate_card_statistics.InitVars();
                 }
             }
+            this.tablet_fsl_memquit = ((t_fsl_memquitDataTable)(base.Tables["t_fsl_memquit"]));
+            if ((initTable == true)) {
+                if ((this.tablet_fsl_memquit != null)) {
+                    this.tablet_fsl_memquit.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -336,6 +360,8 @@ namespace QuanMinFinancialStatement {
             base.Tables.Add(this.tabletime_card_statistics);
             this.tabledate_card_statistics = new date_card_statisticsDataTable();
             base.Tables.Add(this.tabledate_card_statistics);
+            this.tablet_fsl_memquit = new t_fsl_memquitDataTable();
+            base.Tables.Add(this.tablet_fsl_memquit);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -371,6 +397,12 @@ namespace QuanMinFinancialStatement {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializedate_card_statistics() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializet_fsl_memquit() {
             return false;
         }
         
@@ -446,6 +478,9 @@ namespace QuanMinFinancialStatement {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void date_card_statisticsRowChangeEventHandler(object sender, date_card_statisticsRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void t_fsl_memquitRowChangeEventHandler(object sender, t_fsl_memquitRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -2378,6 +2413,351 @@ namespace QuanMinFinancialStatement {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class t_fsl_memquitDataTable : global::System.Data.TypedTableBase<t_fsl_memquitRow> {
+            
+            private global::System.Data.DataColumn column卡号;
+            
+            private global::System.Data.DataColumn column姓名;
+            
+            private global::System.Data.DataColumn column卡种;
+            
+            private global::System.Data.DataColumn column余次;
+            
+            private global::System.Data.DataColumn column天数;
+            
+            private global::System.Data.DataColumn column卡内余额;
+            
+            private global::System.Data.DataColumn column退卡金额;
+            
+            private global::System.Data.DataColumn column退卡时间;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public t_fsl_memquitDataTable() {
+                this.TableName = "t_fsl_memquit";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal t_fsl_memquitDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected t_fsl_memquitDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 卡号Column {
+                get {
+                    return this.column卡号;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 姓名Column {
+                get {
+                    return this.column姓名;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 卡种Column {
+                get {
+                    return this.column卡种;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 余次Column {
+                get {
+                    return this.column余次;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 天数Column {
+                get {
+                    return this.column天数;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 卡内余额Column {
+                get {
+                    return this.column卡内余额;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 退卡金额Column {
+                get {
+                    return this.column退卡金额;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 退卡时间Column {
+                get {
+                    return this.column退卡时间;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public t_fsl_memquitRow this[int index] {
+                get {
+                    return ((t_fsl_memquitRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event t_fsl_memquitRowChangeEventHandler t_fsl_memquitRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event t_fsl_memquitRowChangeEventHandler t_fsl_memquitRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event t_fsl_memquitRowChangeEventHandler t_fsl_memquitRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event t_fsl_memquitRowChangeEventHandler t_fsl_memquitRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Addt_fsl_memquitRow(t_fsl_memquitRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public t_fsl_memquitRow Addt_fsl_memquitRow(string 卡号, string 姓名, string 卡种, string 余次, string 天数, string 卡内余额, string 退卡金额, string 退卡时间) {
+                t_fsl_memquitRow rowt_fsl_memquitRow = ((t_fsl_memquitRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        卡号,
+                        姓名,
+                        卡种,
+                        余次,
+                        天数,
+                        卡内余额,
+                        退卡金额,
+                        退卡时间};
+                rowt_fsl_memquitRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowt_fsl_memquitRow);
+                return rowt_fsl_memquitRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                t_fsl_memquitDataTable cln = ((t_fsl_memquitDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new t_fsl_memquitDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.column卡号 = base.Columns["卡号"];
+                this.column姓名 = base.Columns["姓名"];
+                this.column卡种 = base.Columns["卡种"];
+                this.column余次 = base.Columns["余次"];
+                this.column天数 = base.Columns["天数"];
+                this.column卡内余额 = base.Columns["卡内余额"];
+                this.column退卡金额 = base.Columns["退卡金额"];
+                this.column退卡时间 = base.Columns["退卡时间"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.column卡号 = new global::System.Data.DataColumn("卡号", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column卡号);
+                this.column姓名 = new global::System.Data.DataColumn("姓名", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column姓名);
+                this.column卡种 = new global::System.Data.DataColumn("卡种", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column卡种);
+                this.column余次 = new global::System.Data.DataColumn("余次", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column余次);
+                this.column天数 = new global::System.Data.DataColumn("天数", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column天数);
+                this.column卡内余额 = new global::System.Data.DataColumn("卡内余额", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column卡内余额);
+                this.column退卡金额 = new global::System.Data.DataColumn("退卡金额", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column退卡金额);
+                this.column退卡时间 = new global::System.Data.DataColumn("退卡时间", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column退卡时间);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public t_fsl_memquitRow Newt_fsl_memquitRow() {
+                return ((t_fsl_memquitRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new t_fsl_memquitRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(t_fsl_memquitRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.t_fsl_memquitRowChanged != null)) {
+                    this.t_fsl_memquitRowChanged(this, new t_fsl_memquitRowChangeEvent(((t_fsl_memquitRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.t_fsl_memquitRowChanging != null)) {
+                    this.t_fsl_memquitRowChanging(this, new t_fsl_memquitRowChangeEvent(((t_fsl_memquitRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.t_fsl_memquitRowDeleted != null)) {
+                    this.t_fsl_memquitRowDeleted(this, new t_fsl_memquitRowChangeEvent(((t_fsl_memquitRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.t_fsl_memquitRowDeleting != null)) {
+                    this.t_fsl_memquitRowDeleting(this, new t_fsl_memquitRowChangeEvent(((t_fsl_memquitRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Removet_fsl_memquitRow(t_fsl_memquitRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                dsQuan ds = new dsQuan();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "t_fsl_memquitDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class mem_sale_allRow : global::System.Data.DataRow {
@@ -3532,6 +3912,245 @@ namespace QuanMinFinancialStatement {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class t_fsl_memquitRow : global::System.Data.DataRow {
+            
+            private t_fsl_memquitDataTable tablet_fsl_memquit;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal t_fsl_memquitRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tablet_fsl_memquit = ((t_fsl_memquitDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 卡号 {
+                get {
+                    try {
+                        return ((string)(this[this.tablet_fsl_memquit.卡号Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“t_fsl_memquit”中列“卡号”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tablet_fsl_memquit.卡号Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 姓名 {
+                get {
+                    try {
+                        return ((string)(this[this.tablet_fsl_memquit.姓名Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“t_fsl_memquit”中列“姓名”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tablet_fsl_memquit.姓名Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 卡种 {
+                get {
+                    try {
+                        return ((string)(this[this.tablet_fsl_memquit.卡种Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“t_fsl_memquit”中列“卡种”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tablet_fsl_memquit.卡种Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 余次 {
+                get {
+                    try {
+                        return ((string)(this[this.tablet_fsl_memquit.余次Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“t_fsl_memquit”中列“余次”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tablet_fsl_memquit.余次Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 天数 {
+                get {
+                    try {
+                        return ((string)(this[this.tablet_fsl_memquit.天数Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“t_fsl_memquit”中列“天数”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tablet_fsl_memquit.天数Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 卡内余额 {
+                get {
+                    try {
+                        return ((string)(this[this.tablet_fsl_memquit.卡内余额Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“t_fsl_memquit”中列“卡内余额”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tablet_fsl_memquit.卡内余额Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 退卡金额 {
+                get {
+                    try {
+                        return ((string)(this[this.tablet_fsl_memquit.退卡金额Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“t_fsl_memquit”中列“退卡金额”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tablet_fsl_memquit.退卡金额Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 退卡时间 {
+                get {
+                    try {
+                        return ((string)(this[this.tablet_fsl_memquit.退卡时间Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“t_fsl_memquit”中列“退卡时间”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tablet_fsl_memquit.退卡时间Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is卡号Null() {
+                return this.IsNull(this.tablet_fsl_memquit.卡号Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set卡号Null() {
+                this[this.tablet_fsl_memquit.卡号Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is姓名Null() {
+                return this.IsNull(this.tablet_fsl_memquit.姓名Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set姓名Null() {
+                this[this.tablet_fsl_memquit.姓名Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is卡种Null() {
+                return this.IsNull(this.tablet_fsl_memquit.卡种Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set卡种Null() {
+                this[this.tablet_fsl_memquit.卡种Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is余次Null() {
+                return this.IsNull(this.tablet_fsl_memquit.余次Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set余次Null() {
+                this[this.tablet_fsl_memquit.余次Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is天数Null() {
+                return this.IsNull(this.tablet_fsl_memquit.天数Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set天数Null() {
+                this[this.tablet_fsl_memquit.天数Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is卡内余额Null() {
+                return this.IsNull(this.tablet_fsl_memquit.卡内余额Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set卡内余额Null() {
+                this[this.tablet_fsl_memquit.卡内余额Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is退卡金额Null() {
+                return this.IsNull(this.tablet_fsl_memquit.退卡金额Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set退卡金额Null() {
+                this[this.tablet_fsl_memquit.退卡金额Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is退卡时间Null() {
+                return this.IsNull(this.tablet_fsl_memquit.退卡时间Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set退卡时间Null() {
+                this[this.tablet_fsl_memquit.退卡时间Column] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -3721,6 +4340,40 @@ namespace QuanMinFinancialStatement {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public date_card_statisticsRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class t_fsl_memquitRowChangeEvent : global::System.EventArgs {
+            
+            private t_fsl_memquitRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public t_fsl_memquitRowChangeEvent(t_fsl_memquitRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public t_fsl_memquitRow Row {
                 get {
                     return this.eventRow;
                 }
